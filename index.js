@@ -12,6 +12,19 @@ if (!databaseUri) {
 }
 
 var api = new ParseServer({
+  
+  push: {
+ ios: [{
+ pfx: 'aps_development.p12',
+ bundleId: 'com.scottmartin.3cstasy',
+ production: false // Development
+ }, {
+ pfx: 'aps.p12',
+ bundleId: 'com.scottmartin.3cstasy',
+ production: true // Production
+ }]
+ },
+  
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'myAppId',

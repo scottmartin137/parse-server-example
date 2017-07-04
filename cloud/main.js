@@ -20,8 +20,7 @@ Parse.Cloud.define("sendMessagePush", function(request, response) {
 });
 Parse.Cloud.define("flagUser", function(request, response) {
 
- var params = request.params; //Grab the parameters from the
-request.
+ var params = request.params; //Grab the parameters from the request.
  var displayedUserId = params.displayedUserId; //Get the displayed user id from the profile view.
 
  //Get the displayed user object.

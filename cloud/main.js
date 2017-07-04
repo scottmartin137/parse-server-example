@@ -5,10 +5,8 @@ Parse.Cloud.define("sendMessagePush", function(request, response) {
  var data = params.data
 
  var pushQuery = new Parse.Query(Parse.Installation);
- pushQuery.equalTo('deviceType', 'ios'); //Only target users on the iOS
-platform.
- pushQuery.containedIn('ownerId', recipientIds); //Only send the message to the
-recipients.
+ pushQuery.equalTo('deviceType', 'ios'); //Only target users on the iOS platform.
+ pushQuery.containedIn('ownerId', recipientIds); //Only send the message to the recipients.
 
  Parse.Push.send({
  where: pushQuery, // Set our Installation query
@@ -24,8 +22,7 @@ Parse.Cloud.define("flagUser", function(request, response) {
 
  var params = request.params; //Grab the parameters from the
 request.
- var displayedUserId = params.displayedUserId; //Get the displayed user id from the
-profile view.
+ var displayedUserId = params.displayedUserId; //Get the displayed user id from the profile view.
 
  //Get the displayed user object.
  var user = Parse.Object.extend("_User");
@@ -37,11 +34,9 @@ profile view.
  if (results[0])
  {
  var displayedUser = results[0];
- var flagCount = displayedUser.get("flagCount"); //Get the flag count from the
-displayed user.
+ var flagCount = displayedUser.get("flagCount"); //Get the flag count from the displayed user.
  var newFlagCount = flagCount + 1; //Add one to the flag count.
- displayedUser.set("flagCount", newFlagCount); //Set the new flag count to the
-displayed user.
+ displayedUser.set("flagCount", newFlagCount); //Set the new flag count to the displayed user.
  //Save the displayed user to the backend.
  displayedUser.save(null, {useMasterKey:true});
  }
